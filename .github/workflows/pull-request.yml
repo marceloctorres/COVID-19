@@ -12,8 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2	
+      with:	
+        repository: marceloctorres/COVID-19 	
+        path: target	
+
+    - uses: actions/checkout@v2	
+      with:	
+        repository: CSSEGISandData/COVID-19	
+        path: source      - id: 
     - name: Pull Request .
       run: |
+        cd target
         GITHUB_TOKEN='m4rc3l025202$$'
         echo $GITHUB_TOKEN
          
