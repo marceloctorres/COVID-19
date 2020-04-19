@@ -17,22 +17,17 @@ jobs:
         repository: marceloctorres/COVID-19 	
         path: target	
 
-    - uses: actions/checkout@v2	
-      with:	
-        repository: CSSEGISandData/COVID-19	
-        path: source
-        
     - name: Pull Request Code
       run: |
         cd target
         GITHUB_TOKEN='m4rc3l025202$$'
         echo $GITHUB_TOKEN
          
-        echo "git config user.name 'marceloctorres'"
-        git config user.name 'marceloctorres'
+        echo "git config --global user.name 'marceloctorres'"
+        git config --global user.name 'marceloctorres'
 
-        echo "git config user.password $GITHUB_TOKEN"
-        git config user.password $GITHUB_TOKEN
+        echo "git config --global user.password $GITHUB_TOKEN"
+        git config --global user.password $GITHUB_TOKEN
         
         echo 'git config credential.helper store'
         git config credential.helper store
@@ -49,13 +44,19 @@ jobs:
         echo "git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'"
         git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'
         
+        echo "git remote add downstream 'https://github.com/marceloctorresnet/COVID-19.git'"
+        git remote add downstream 'https://github.com/marceloctorresnet/COVID-19.git'
+        
         echo "git remote -v"
         git remote -v
         
-        echo "hub pr list"
-        hub pr list
+        git pull upstream master
         
-        echo "hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp" 
-        hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp
+        git add .
+        git commit -m 'Automatizado o manual?'
+        git push origin master
+        
+        PULL-REQUEST="hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp"
+        
       env:
         github_token:  ${{ secrets.TOKEN }}
