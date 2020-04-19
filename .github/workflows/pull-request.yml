@@ -50,6 +50,13 @@ jobs:
         echo "git remote -v"
         git remote -v
         
+        echo "git checkout master"
+        git checkout master
+        
+        echo "git pull origin master"
+        git pull origin master
+        
+        echo "git pull upstream master"
         git pull upstream master
         
         git add .
