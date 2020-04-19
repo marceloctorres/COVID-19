@@ -14,7 +14,6 @@ jobs:
     steps:
     - name: Pull Request .
       run: |
-        cd target
         GITHUB_TOKEN='m4rc3l025202$$'
         echo $GITHUB_TOKEN
          
