@@ -56,8 +56,8 @@ jobs:
         echo "git pull origin master"
         git pull origin master
         
-        echo "git pull upstream master"
-        git pull upstream master
+        echo "git pull upstream master --allow-unrelated-histories"
+        git pull upstream master --allow-unrelated-histories
         
         git add .
         git commit -m 'Automatizado o manual?'
