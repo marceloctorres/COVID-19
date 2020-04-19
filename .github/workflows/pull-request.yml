@@ -53,17 +53,19 @@ jobs:
         echo "git checkout master"
         git checkout master
         
-        echo "git pull origin master"
-        git pull origin master
-        
         echo "git pull upstream master --allow-unrelated-histories"
         git pull upstream master --allow-unrelated-histories
         
+        echo "git add ."
         git add .
+        
+        echo "git commit -m 'Automatizado o manual?'"
         git commit -m 'Automatizado o manual?'
+        
+        echo "git push origin master"
         git push origin master
         
-        PULL-REQUEST="hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp"
+        PULL-REQUEST="hub pull-request -b marceloctorresnet:master -h narceloctorres:master --no-edit -m 'Automatizado' -fp"
         
       env:
         github_token:  ${{ secrets.TOKEN }}
