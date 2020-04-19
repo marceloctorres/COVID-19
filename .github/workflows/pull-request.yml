@@ -12,33 +12,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        repository: marceloctorres/COVID-19 
-        path: target
-        
-    - uses: actions/checkout@v2
-      with:
-        repository: CSSEGISandData/COVID-19
+    - uses: actions/checkout@v2	
+      with:	
+        repository: marceloctorres/COVID-19 	
+        path: target	
+
+    - uses: actions/checkout@v2	
+      with:	
+        repository: CSSEGISandData/COVID-19	
         path: source
         
-    - name: Pull Request .
+    - name: Pull Request Code
       run: |
         cd target
-        GITHUB_TOKEN=${{ secrets.TOKEN }}
+        GITHUB_TOKEN='m4rc3l025202$$'
         echo $GITHUB_TOKEN
          
-        echo "config --global user.name 'marceloctorres'"
-        git config --global user.name 'marceloctorres'
+        echo "git config user.name 'marceloctorres'"
+        git config user.name 'marceloctorres'
 
-        echo "config --global user.password $GITHUB_TOKEN"
-        git config --global user.password m4rc3l025202$$
+        echo "git config user.password $GITHUB_TOKEN"
+        git config user.password $GITHUB_TOKEN
         
-        echo 'git config --global credential.helper store'
-        git config --global credential.helper store
+        echo 'git config credential.helper store'
+        git config credential.helper store
         
-        echo 'git config --global credential.github.com.useHttpPath true'
-        git config --global credential.github.com.useHttpPath true
+        echo 'git config credential.github.com.useHttpPath true'
+        git config credential.github.com.useHttpPath true
         
         echo 'git remote -v'
         git remote -v
@@ -46,8 +46,8 @@ jobs:
         echo "git remote set-url origin 'https://marceloctorres:$GITHUB_TOKEN@github.com/marceloctorres/COVID-19.git'"
         git remote set-url origin 'https://marceloctorres:$GITHUB_TOKEN@github.com/marceloctorres/COVID-19.git'
         
-        echo "git remote add upstream 'https://CSSEGISandData/COVID-19.git'"
-        git remote add upstream 'https://CSSEGISandData/COVID-19.git'
+        echo "git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'"
+        git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'
         
         echo "git remote -v"
         git remote -v
@@ -55,5 +55,7 @@ jobs:
         echo "hub pr list"
         hub pr list
         
-        echo "hub pull-request -b marceloctorres:master -h CCSEGISandData:master --no-edit -m 'Automatizado'"
-        hub pull-request -b marceloctorres:master -h CCSEGISandData:master --no-edit -m 'Automatizado'
+        echo "hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp" 
+        hub pull-request -b marceloctorres:master -h CSSEGISandData:master --no-edit -m 'Automatizado' -fp
+      env:
+        github_token:  ${{ secrets.TOKEN }}
