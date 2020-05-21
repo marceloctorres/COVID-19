@@ -20,7 +20,7 @@ jobs:
     - name: Pull Request Code
       run: |
         cd target
-        GITHUB_TOKEN='m4rc3l025202$$'
+        GITHUB_TOKEN=secrets.TOKEN
         echo $GITHUB_TOKEN
          
         echo "git config --global user.name 'marceloctorres'"
