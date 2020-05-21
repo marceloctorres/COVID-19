@@ -32,9 +32,6 @@ jobs:
         echo 'git config credential.helper store'
         git config credential.helper store
         
-        echo 'git config credential.github.com.useHttpPath true'
-        git config credential.github.com.useHttpPath true
-        
         echo 'git remote -v'
         git remote -v
 
