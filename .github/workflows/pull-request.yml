@@ -20,13 +20,13 @@ jobs:
     - name: Pull Request Code
       run: |
         cd target
-        GITHUB_TOKEN=secrets.TOKEN
+        GITHUB_TOKEN=$secrets.TOKEN
         echo $GITHUB_TOKEN
          
-        echo "git config --global user.name 'marceloctorres'"
+        echo git config --global user.name 'marceloctorres'
         git config --global user.name 'marceloctorres'
 
-        echo "git config --global user.password $GITHUB_TOKEN"
+        echo git config --global user.password $GITHUB_TOKEN
         git config --global user.password $GITHUB_TOKEN
         
         echo 'git config credential.helper store'
@@ -35,31 +35,31 @@ jobs:
         echo 'git remote -v'
         git remote -v
 
-        echo "git remote set-url origin 'https://marceloctorres:$GITHUB_TOKEN@github.com/marceloctorres/COVID-19.git'"
+        echo git remote set-url origin 'https://marceloctorres:$GITHUB_TOKEN@github.com/marceloctorres/COVID-19.git'
         git remote set-url origin 'https://marceloctorres:$GITHUB_TOKEN@github.com/marceloctorres/COVID-19.git'
         
-        echo "git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'"
+        echo git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'
         git remote add upstream 'https://github.com/CSSEGISandData/COVID-19.git'
         
-        echo "git remote add downstream 'https://github.com/marceloctorresnet/COVID-19.git'"
+        echo git remote add downstream 'https://github.com/marceloctorresnet/COVID-19.git'
         git remote add downstream 'https://github.com/marceloctorresnet/COVID-19.git'
         
-        echo "git remote -v"
+        echo git remote -v
         git remote -v
         
-        echo "git checkout master"
+        echo git checkout master
         git checkout master
         
-        echo "git pull upstream master --allow-unrelated-histories"
+        echo git pull upstream master --allow-unrelated-histories
         git pull upstream master --allow-unrelated-histories
         
-        echo "git add ."
+        echo git add .
         git add .
         
-        echo "git commit -m 'Automatizado o manual?'"
+        echo git commit -m 'Automatizado o manual?'
         git commit -m 'Automatizado o manual?'
         
-        echo "git push origin master"
+        echo git push origin master
         git push origin master
         
         PULL-REQUEST="hub pull-request -b marceloctorresnet:master -h narceloctorres:master --no-edit -m 'Automatizado' -fp"
